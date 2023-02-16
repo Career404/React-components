@@ -1,0 +1,13 @@
+nav.Navbar {
+	height: 80px;
+	position: relative;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	padding: 10px;
+	overflow: visible;
+}
+nav.Navbar > * {
+	position: relative;
+	z-index: 1;
+}
