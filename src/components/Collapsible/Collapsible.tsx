@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import detectOutsideClick from '../../hooks/DetectOutsideClick'
 import './Collapsible.css'
 
@@ -6,15 +6,20 @@ interface CProps {
 	children: React.ReactNode
 	handle?: string
 	altHandle?: string
-	boxStyle?: CSSProperties
+	boxStyle?: React.CSSProperties
 	maxWidthHandle?: boolean
+	callback?: (value?: any) => any
 }
+
 export default function Collapsible({
 	children = 'Hello there!',
 	handle = 'click me',
 	altHandle = handle,
 	boxStyle,
 	maxWidthHandle = false,
+	callback = (data: string) => {
+		console.log(`Selected: ${data}`)
+	},
 }: CProps) {
 	const [open, setOpen] = React.useState(false)
 	const [elementWidth, setElementWidth] = React.useState('unset')
@@ -23,24 +28,53 @@ export default function Collapsible({
 			setOpen(!open)
 		}
 	}
-	const ref: React.RefObject<HTMLDivElement> = detectOutsideClick(handleClick)
+	const ref: React.RefObject<HTMLDivElement> | null =
+		detectOutsideClick(handleClick)
+
 	React.useEffect(() => {
 		if (maxWidthHandle) {
 			setElementWidth(ref.current?.offsetWidth + 'px')
 		}
 	}, [maxWidthHandle])
-
+	function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			setOpen(!open)
+		} else if (event.key === 'Escape') {
+			setOpen(false)
+		}
+	}
+	function handleChildKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+		if (event.key === 'Escape') {
+			setOpen(false)
+		} else if (event.key === ' ' || event.key === 'Enter') {
+			callback((event.target as HTMLElement).textContent)
+		}
+	}
 	return (
 		<div
 			style={{ ...boxStyle, minWidth: elementWidth }}
 			onClick={() => {
 				setOpen(!open)
 			}}
+			onKeyDown={handleKeyDown}
 			ref={ref}
+			tabIndex={0}
 			className={`handle ${open ? 'Collapsible_opened' : 'Collapsible_closed'}`}
 		>
 			<span>{!open ? handle : altHandle}</span>
-			<ul>{children}</ul>
+			<ul>
+				{React.Children.map(children, (child) => {
+					return React.cloneElement(child as React.ReactElement<any>, {
+						onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+							handleChildKeyDown(e)
+						},
+						onClick: (e: React.MouseEvent<HTMLElement>) => {
+							callback((e.target as HTMLElement).textContent)
+						},
+						tabIndex: open ? 0 : -1,
+					})
+				})}
+			</ul>
 		</div>
 	)
 }
