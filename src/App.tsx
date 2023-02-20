@@ -3,6 +3,7 @@ import Nav from './components/nav/nav'
 import './App.css'
 import Collapsible from './components/Collapsible/Collapsible'
 import Blob from './components/Blob/Blob'
+import HackerText from './components/hackerText/HackerText'
 
 function App() {
 	const [collapsibleSelect, setcollapsibleSelect] = useState('')
@@ -113,6 +114,18 @@ function App() {
 					</p>
 				</div>
 				<Blob />
+				<div className="info">
+					<h3>{'<HackerText>'}</h3>
+					<p>
+						This cool effect is from{' '}
+						<a href="https://www.youtube.com/watch?v=W5oawMJaXbU&t=1s&ab_channel=Hyperplexed">
+							this video
+						</a>{' '}
+						by <a href="https://www.youtube.com/@Hyperplexed">Hyperplexed</a>
+					</p>
+					<p>Takes {'{ text }'} prop (obvious)</p>
+				</div>
+				<HackerText text="HERESSOMELONGTEXT" />
 			</main>
 		</div>
 	)
