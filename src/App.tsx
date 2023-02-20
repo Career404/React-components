@@ -2,14 +2,18 @@ import { useState } from 'react'
 import Nav from './components/nav/nav'
 import './App.css'
 import Collapsible from './components/Collapsible/Collapsible'
+import Blob from './components/Blob/Blob'
 
 function App() {
-	const [current, setCurrent] = useState('Intro')
+	const [collapsibleSelect, setcollapsibleSelect] = useState('')
+	function handleCollapsible(data: string) {
+		setcollapsibleSelect(data)
+	}
 	return (
 		<div className="App">
 			<Nav>
 				<Collapsible
-					handle="freecodecamp - long handle for demonstration purposes"
+					handle="freecodecamp - no maxWidthHandle"
 					altHandle="close"
 					boxStyle={{
 						backgroundColor: '#5a5a5acc',
@@ -30,27 +34,38 @@ function App() {
 					<li>Grocery Bud</li>
 					<li>Slider</li>
 				</Collapsible>
+				<Collapsible handle="Hyperplexed" altHandle="close" maxWidthHandle>
+					<li>Blob</li>
+					<li>HackerText</li>
+				</Collapsible>
 				<Collapsible
-					handle="My components - long handle for demonstration purposes"
+					handle="My components - long handle to demonstrate maxWidthHandle"
 					altHandle="close"
 					boxStyle={{
 						backgroundColor: 'rgba(30,40,50, 0.8)',
 					}}
 					maxWidthHandle
 				>
-					<li>Collapsible</li>
-					<li>Navigation</li>
+					<p>Collapsible</p>
+					<p>Navigation</p>
 				</Collapsible>
 			</Nav>
 			<main>
 				<div className="info" id="collapsible">
 					<h3>{'<Collapsible>'}</h3>
 					<p>Example in Navbar on the top of the page</p>
+					<p>Keyboard-focusable!</p>
 					<p>
 						Use li elements as children to use built-in styling, anything else
 						to ignore it <br />
 						Use maxWidthHandle prop to set width of the element equal to the
-						width of default (closed) element. It (almost always) just works
+						width of default (closed) element. Aa little finnicky on window
+						resize.
+					</p>
+					<p>
+						Currently requires custom handleChildKeyDown implementation for each
+						project. Default callback updates collapsibleSelect state on parent
+						component as callback, setting it to selected textNode.
 					</p>
 					<p>
 						hooks: useState for open/close, useRef and useState to set
@@ -76,10 +91,11 @@ function App() {
 						flex
 					</p>
 					<p>
-						I'll have to come up with a reacon why this is a separate component
+						I'll have to come up with a reason why this is a separate component
 						one day
 					</p>
 				</div>
+				<Blob />
 			</main>
 		</div>
 	)
