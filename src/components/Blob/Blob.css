@@ -1,4 +1,4 @@
-div#blob {
+div.blob {
 	position: absolute;
 	background-color: white;
 	height: 300px;
@@ -21,7 +21,7 @@ div#blob {
 		transform: rotate(360deg);
 	}
 }
-div#blur {
+div.blur {
 	position: absolute;
 	top: 0;
 	left: 0;

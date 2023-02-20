@@ -1,21 +1,23 @@
 import React from 'react'
 import './Blob.css'
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
-	colors?: React.CSSProperties['background']
-	style?: React.CSSProperties
-	blur?: React.CSSProperties['filter']
-}
-
 export default function Blob({
 	colors = 'linear-gradient(to bottom right, #00425A, #1F8A70, #BFDB38, #FC7300)',
-	style,
+	blobStyle,
 	blur,
-}: Props) {
-	React.useEffect(() => {
-		const handlePointerMove = (event: PointerEvent) => {
+	blurStyle,
+}: React.HTMLAttributes<HTMLDivElement> & {
+	colors?: string
+	blobStyle?: React.CSSProperties
+	blur?: React.CSSProperties['filter']
+	blurStyle?: React.CSSProperties
+}) {
+	const blobRef = React.useRef<HTMLDivElement>(null)
+
+	const handlePointerMove = React.useCallback(
+		(event: PointerEvent) => {
 			const { clientX, clientY } = event
-			const blob = document.getElementById('blob')
+			const blob = blobRef.current
 			if (blob) {
 				blob.animate(
 					{
@@ -25,16 +27,24 @@ export default function Blob({
 					{ duration: 2500, fill: 'forwards' }
 				)
 			}
-		}
-		window.addEventListener('pointermove', handlePointerMove)
+		},
+		[blobRef]
+	)
 
+	React.useEffect(() => {
+		window.addEventListener('pointermove', handlePointerMove)
 		return () => {
 			window.removeEventListener('pointermove', handlePointerMove)
 		}
-	}, [])
+	}, [handlePointerMove])
+
 	return (
-		<div id="blur" style={{ filter: blur }}>
-			<div id="blob" style={{ background: colors, ...style }}></div>
+		<div className="blur" style={{ filter: blur, ...blurStyle }}>
+			<div
+				className="blob"
+				ref={blobRef}
+				style={{ background: colors, ...blobStyle }}
+			></div>
 		</div>
 	)
 }
