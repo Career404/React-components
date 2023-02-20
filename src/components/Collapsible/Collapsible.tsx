@@ -1,25 +1,11 @@
 import React, { CSSProperties } from 'react'
+import detectOutsideClick from '../../hooks/DetectOutsideClick'
 import './Collapsible.css'
 
-function detectOutsideClick<T extends HTMLElement>(callback: () => void) {
-	const ref = React.useRef<T>(null)
-	React.useEffect(() => {
-		function handleClickOutside(event: MouseEvent) {
-			if (ref.current && !ref.current.contains(event.target as Node)) {
-				callback()
-			}
-		}
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-	}, [ref, callback])
-	return ref
-}
 interface CProps {
 	children: React.ReactNode
-	handle: string
-	altHandle: string
+	handle?: string
+	altHandle?: string
 	boxStyle?: CSSProperties
 	maxWidthHandle?: boolean
 }
@@ -41,7 +27,6 @@ export default function Collapsible({
 	React.useEffect(() => {
 		if (maxWidthHandle) {
 			setElementWidth(ref.current?.offsetWidth + 'px')
-			console.log(ref)
 		}
 	}, [maxWidthHandle])
 
@@ -54,7 +39,7 @@ export default function Collapsible({
 			ref={ref}
 			className={`handle ${open ? 'Collapsible_opened' : 'Collapsible_closed'}`}
 		>
-			{!open ? handle : altHandle}
+			<span>{!open ? handle : altHandle}</span>
 			<ul>{children}</ul>
 		</div>
 	)
