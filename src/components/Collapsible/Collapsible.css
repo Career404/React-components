@@ -11,18 +11,18 @@
 	font-size: 1.1rem;
 }
 
-ul {
-	display: none;
+.handle ul {
+	display: flex;
 	list-style: none;
 	padding: 0;
 	flex-flow: column nowrap;
 	justify-content: center;
 	transition: 0.5s ease-out;
 }
-ul > li {
+.handle ul > li {
 	border-bottom: 1px solid black;
 }
-ul > li:hover {
+.handle ul > li:hover {
 	border-bottom: 1px solid white;
 	text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
 		0px -5px 35px rgba(255, 255, 255, 0.3);
@@ -33,8 +33,4 @@ ul > li:hover {
 }
 .handle.Collapsible_opened {
 	height: fit-content;
-}
-
-.handle.Collapsible_opened ul {
-	display: flex;
 }

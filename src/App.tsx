@@ -13,7 +13,7 @@ function App() {
 		<div className="App">
 			<Nav>
 				<Collapsible
-					handle="freecodecamp - no maxWidthHandle"
+					handle="freecodecamp"
 					altHandle="close"
 					boxStyle={{
 						backgroundColor: '#5a5a5acc',
@@ -34,17 +34,16 @@ function App() {
 					<li>Grocery Bud</li>
 					<li>Slider</li>
 				</Collapsible>
-				<Collapsible handle="Hyperplexed" altHandle="close" maxWidthHandle>
+				<Collapsible handle="Hyperplexed" altHandle="close">
 					<li>Blob</li>
 					<li>HackerText</li>
 				</Collapsible>
 				<Collapsible
-					handle="My components - long handle to demonstrate maxWidthHandle"
+					handle="My components"
 					altHandle="close"
 					boxStyle={{
 						backgroundColor: 'rgba(30,40,50, 0.8)',
 					}}
-					maxWidthHandle
 				>
 					<p>Collapsible</p>
 					<p>Navigation</p>
@@ -58,19 +57,14 @@ function App() {
 					<p>
 						Use li elements as children to use built-in styling, anything else
 						to ignore it <br />
-						Use maxWidthHandle prop to set width of the element equal to the
-						width of default (closed) element. Aa little finnicky on window
-						resize.
 					</p>
 					<p>
-						Currently requires custom handleChildKeyDown implementation for each
-						project. Default callback updates collapsibleSelect state on parent
-						component as callback, setting it to selected textNode.
+						Takes callback function - default console.logs selected textContent.
 					</p>
 					<p>
-						hooks: useState for open/close, useRef and useState to set
-						maxWidthHandle and custom hook with useRef and useEffect to detect
-						clicks outside the element
+						hooks: useState for open/close, custom hook with useRef and
+						useEffect to detect clicks outside the element, useEffect to handle
+						keyboard controls
 					</p>
 					<br />
 					<p>

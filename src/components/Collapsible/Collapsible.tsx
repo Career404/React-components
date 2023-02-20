@@ -7,7 +7,6 @@ interface CProps {
 	handle?: string
 	altHandle?: string
 	boxStyle?: React.CSSProperties
-	maxWidthHandle?: boolean
 	callback?: (value?: any) => any
 }
 
@@ -16,7 +15,6 @@ export default function Collapsible({
 	handle = 'click me',
 	altHandle = handle,
 	boxStyle,
-	maxWidthHandle = false,
 	callback = (data: string) => {
 		console.log(`Selected: ${data}`)
 	},
@@ -32,10 +30,8 @@ export default function Collapsible({
 		detectOutsideClick(handleClick)
 
 	React.useEffect(() => {
-		if (maxWidthHandle) {
-			setElementWidth(ref.current?.offsetWidth + 'px')
-		}
-	}, [maxWidthHandle])
+		setElementWidth(ref.current?.offsetWidth + 'px')
+	}, [])
 	function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
 		if (event.key === 'Enter' || event.key === ' ') {
 			setOpen(!open)
