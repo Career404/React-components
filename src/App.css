@@ -1,3 +1,10 @@
+h1,
+h2,
+h3 {
+	text-align: center;
+	padding: 10px;
+	font-size: 3em;
+}
 main {
 	padding: 2rem;
 }

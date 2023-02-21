@@ -72,6 +72,11 @@ function App() {
 					<p>Navigation</p>
 				</Collapsible>
 			</Nav>
+			<h2>
+				{'<'}
+				{collapsibleSelect}
+				{'>'}
+			</h2>
 			<main>
 				<div className="info" id="intro">
 					<h3>Hello there!</h3>
@@ -86,7 +91,6 @@ function App() {
 					</p>
 				</div>
 				<div className="info" id="Collapsible">
-					<h3>{'<Collapsible>'}</h3>
 					<p>Example in Navbar on the top of the page</p>
 					<p>Keyboard-focusable!</p>
 					<p>
@@ -119,7 +123,6 @@ function App() {
 					</p>
 				</div>
 				<div className="info" id="Navigation">
-					<h3>{'<Nav>'}</h3>
 					<p>Example on the top of the page</p>
 					<p>
 						Not much of a component - just a {'<nav>'} element with display:
@@ -131,7 +134,6 @@ function App() {
 					</p>
 				</div>
 				<div className="info" id="Blob">
-					<h3>{'<Blob>'}</h3>
 					<p>
 						This beatiful cursor-following shape-changing color-gradienting
 						background thingy is something I moved to React from{' '}
@@ -156,7 +158,6 @@ function App() {
 					<Blob />
 				</div>
 				<div className="info" id="HackerText">
-					<h3>{'<HackerText>'}</h3>
 					<p>
 						This cool effect is from{' '}
 						<a href="https://www.youtube.com/watch?v=W5oawMJaXbU&t=1s&ab_channel=Hyperplexed">
