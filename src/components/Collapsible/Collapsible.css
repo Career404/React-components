@@ -1,4 +1,4 @@
-.handle {
+.Collapsible {
 	overflow: hidden;
 	transition: 0.5s;
 	border: 1px solid black;
@@ -7,11 +7,11 @@
 	cursor: pointer;
 	text-align: center;
 }
-.handle span {
+.Collapsible span {
 	font-size: 1.1rem;
 }
 
-.handle ul {
+.Collapsible ul {
 	display: flex;
 	list-style: none;
 	padding: 0;
@@ -19,18 +19,18 @@
 	justify-content: center;
 	transition: 0.5s ease-out;
 }
-.handle ul > li {
+.Collapsible ul > li {
 	border-bottom: 1px solid black;
 }
-.handle ul > li:hover {
+.Collapsible ul > li:hover {
 	border-bottom: 1px solid white;
 	text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
 		0px -5px 35px rgba(255, 255, 255, 0.3);
 }
-.handle.Collapsible_closed ul {
+.Collapsible.Collapsible_closed ul {
 	opacity: 0;
 	pointer-events: none;
 }
-.handle.Collapsible_opened {
+.Collapsible.Collapsible_opened {
 	height: fit-content;
 }

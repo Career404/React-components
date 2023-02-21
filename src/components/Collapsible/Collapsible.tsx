@@ -4,16 +4,16 @@ import './Collapsible.css'
 
 interface CProps {
 	children: React.ReactNode
-	handle?: string
-	altHandle?: string
+	title?: string
+	altTitle?: string
 	boxStyle?: React.CSSProperties
 	callback?: (value?: any) => any
 }
 
 export default function Collapsible({
 	children = 'Hello there!',
-	handle = 'click me',
-	altHandle = handle,
+	title = 'click me',
+	altTitle = title,
 	boxStyle,
 	callback = (data: string) => {
 		console.log(`Selected: ${data}`)
@@ -55,9 +55,11 @@ export default function Collapsible({
 			onKeyDown={handleKeyDown}
 			ref={ref}
 			tabIndex={0}
-			className={`handle ${open ? 'Collapsible_opened' : 'Collapsible_closed'}`}
+			className={`Collapsible ${
+				open ? 'Collapsible_opened' : 'Collapsible_closed'
+			}`}
 		>
-			<span>{!open ? handle : altHandle}</span>
+			<span>{!open ? title : altTitle}</span>
 			<ul>
 				{React.Children.map(children, (child) => {
 					return React.cloneElement(child as React.ReactElement<any>, {

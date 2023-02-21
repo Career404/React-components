@@ -39,9 +39,9 @@ export default function Blob({
 	}, [handlePointerMove])
 
 	return (
-		<div className="blur" style={{ filter: blur, ...blurStyle }}>
+		<div className="Blur" style={{ filter: blur, ...blurStyle }}>
 			<div
-				className="blob"
+				className="Blob"
 				ref={blobRef}
 				style={{ background: colors, ...blobStyle }}
 			></div>

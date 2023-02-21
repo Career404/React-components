@@ -42,7 +42,7 @@ export default function HackerText({
 	}
 	return (
 		<span
-			className="hackerText"
+			className="HackerText"
 			style={block ? { display: 'block' } : { display: 'inline-block' }}
 			ref={HackerRef}
 			onMouseOver={handleMouseOver}

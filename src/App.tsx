@@ -6,7 +6,7 @@ import Blob from './components/Blob/Blob'
 import HackerText from './components/hackerText/HackerText'
 
 function App() {
-	const [collapsibleSelect, setcollapsibleSelect] = useState('')
+	const [collapsibleSelect, setcollapsibleSelect] = useState('intro')
 	function handleCollapsible(data: string) {
 		setcollapsibleSelect(data)
 	}
@@ -14,8 +14,8 @@ function App() {
 		<div className="App">
 			<Nav>
 				<Collapsible
-					handle="freecodecamp"
-					altHandle="close"
+					title="freecodecamp"
+					altTitle="close"
 					boxStyle={{
 						backgroundColor: '#5a5a5acc',
 					}}
@@ -35,13 +35,13 @@ function App() {
 					<li>Grocery Bud</li>
 					<li>Slider</li>
 				</Collapsible>
-				<Collapsible handle="Hyperplexed" altHandle="close">
+				<Collapsible title="Hyperplexed" altTitle="close">
 					<li>Blob</li>
 					<li>HackerText</li>
 				</Collapsible>
 				<Collapsible
-					handle="My components"
-					altHandle="close"
+					title="My components"
+					altTitle="close"
 					boxStyle={{
 						backgroundColor: 'rgba(30,40,50, 0.8)',
 					}}
@@ -60,21 +60,24 @@ function App() {
 						to ignore it <br />
 					</p>
 					<p>
+						Class naming follows BEM convention: .Collapsible and
+						.Collapsible_opened / .Collapsible_closed
+					</p>
+					<p>
 						Takes callback function - default console.logs selected textContent.
 					</p>
 					<p>
 						hooks: useState for open/close, custom hook with useRef and
-						useEffect to detect clicks outside the element, useEffect to handle
+						useEffect to detect clicks outside the element, useEffect to title
 						keyboard controls
 					</p>
 					<br />
 					<p>
 						interface CProps {'{'} <br />
 						children: React.ReactNode <br />
-						handle: string <br />
-						altHandle: string <br />
-						handleStyle: CSSProperties <br />
-						maxWidthHandle?: boolean <br />
+						title: string <br />
+						altTitle: string <br />
+						titleStyle: CSSProperties <br />
 						{'}'}
 					</p>
 				</div>
@@ -112,6 +115,7 @@ function App() {
 						<br /> blobStyle - add inline styles to blob, <br /> blur - directly
 						set blur value, <br /> blurStyle - add inline styles to blur layer
 					</p>
+					<p>Classes: .Blob and .Blur</p>
 				</div>
 				<Blob />
 				<div className="info">
@@ -128,6 +132,7 @@ function App() {
 						This is {'<span>'} element with display: inline-block by default.
 						Use 'block' prop to set display: block
 					</p>
+					<p>Has one class: .HackerText</p>
 				</div>
 				<HackerText text="HERESSOMELONGTEXT" />
 			</main>
