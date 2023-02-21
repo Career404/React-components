@@ -124,6 +124,10 @@ function App() {
 						by <a href="https://www.youtube.com/@Hyperplexed">Hyperplexed</a>
 					</p>
 					<p>Takes {'{ text }'} prop (obvious)</p>
+					<p>
+						This is {'<span>'} element with display: inline-block by default.
+						Use 'block' prop to set display: block
+					</p>
 				</div>
 				<HackerText text="HERESSOMELONGTEXT" />
 			</main>
