@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import Nav from './components/nav/nav'
 import './App.css'
 import Collapsible from './components/Collapsible/Collapsible'
@@ -6,10 +6,20 @@ import Blob from './components/Blob/Blob'
 import HackerText from './components/hackerText/HackerText'
 
 function App() {
-	const [collapsibleSelect, setcollapsibleSelect] = useState('intro')
-	function handleCollapsible(data: string) {
-		setcollapsibleSelect(data)
-	}
+	const [collapsibleSelect, setcollapsibleSelect] = React.useState('intro')
+	const collapsibleSelectRef = React.useRef<HTMLElement>()
+
+	React.useEffect(() => {
+		const element = document.getElementById(collapsibleSelect)
+		if (collapsibleSelectRef.current) {
+			collapsibleSelectRef.current.style.display = 'none'
+		}
+		if (element) {
+			element.style.display = 'block'
+			collapsibleSelectRef.current = element
+		}
+	}, [collapsibleSelect])
+
 	return (
 		<div className="App">
 			<Nav>
@@ -18,6 +28,9 @@ function App() {
 					altTitle="close"
 					boxStyle={{
 						backgroundColor: '#5a5a5acc',
+					}}
+					callback={(event) => {
+						setcollapsibleSelect(event.toString())
 					}}
 				>
 					<li>Color Flipper</li>
@@ -35,7 +48,13 @@ function App() {
 					<li>Grocery Bud</li>
 					<li>Slider</li>
 				</Collapsible>
-				<Collapsible title="Hyperplexed" altTitle="close">
+				<Collapsible
+					title="Hyperplexed"
+					altTitle="close"
+					callback={(event) => {
+						setcollapsibleSelect(event.toString())
+					}}
+				>
 					<li>Blob</li>
 					<li>HackerText</li>
 				</Collapsible>
@@ -45,12 +64,27 @@ function App() {
 					boxStyle={{
 						backgroundColor: 'rgba(30,40,50, 0.8)',
 					}}
+					callback={(event) => {
+						setcollapsibleSelect(event.toString())
+					}}
 				>
 					<p>Collapsible</p>
 					<p>Navigation</p>
 				</Collapsible>
 			</Nav>
 			<main>
+				<div className="info" id="intro">
+					<h3>Hello there!</h3>
+					<p>This is a demo page for my custom components</p>
+					<p>
+						There is not only a demo for every component, but also an
+						explanation - short description, component props and classNames
+					</p>
+					<p>
+						Click through the menu above (it is also a custom component) to
+						display the component and its corresponding text
+					</p>
+				</div>
 				<div className="info" id="Collapsible">
 					<h3>{'<Collapsible>'}</h3>
 					<p>Example in Navbar on the top of the page</p>
@@ -64,7 +98,10 @@ function App() {
 						.Collapsible_opened / .Collapsible_closed
 					</p>
 					<p>
-						Takes callback function - default console.logs selected textContent.
+						Takes callback function - default console.logs selected textContent.{' '}
+						<br />
+						handleChildKeyDown function passes (event.target as
+						HTMLElement).textContent to the callback function
 					</p>
 					<p>
 						hooks: useState for open/close, custom hook with useRef and
@@ -116,9 +153,9 @@ function App() {
 						set blur value, <br /> blurStyle - add inline styles to blur layer
 					</p>
 					<p>Classes: .Blob and .Blur</p>
+					<Blob />
 				</div>
-				<Blob />
-				<div className="info">
+				<div className="info" id="HackerText">
 					<h3>{'<HackerText>'}</h3>
 					<p>
 						This cool effect is from{' '}
@@ -133,8 +170,8 @@ function App() {
 						Use 'block' prop to set display: block
 					</p>
 					<p>Has one class: .HackerText</p>
+					<HackerText text="HERESSOMELONGTEXT" />
 				</div>
-				<HackerText text="HERESSOMELONGTEXT" />
 			</main>
 		</div>
 	)
