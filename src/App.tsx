@@ -1,9 +1,10 @@
 import React from 'react'
-import Nav from './components/nav/nav'
 import './App.css'
+import Nav from './components/nav/nav'
 import Collapsible from './components/Collapsible/Collapsible'
 import Blob from './components/Blob/Blob'
 import HackerText from './components/hackerText/HackerText'
+import Hero from './components/Hero/Hero'
 
 function App() {
 	const [collapsibleSelect, setcollapsibleSelect] = React.useState('intro')
@@ -70,13 +71,14 @@ function App() {
 				>
 					<p>Collapsible</p>
 					<p>Navigation</p>
+					<p>Hero</p>
 				</Collapsible>
 			</Nav>
-			<h2>
+			<h1>
 				{'<'}
 				{collapsibleSelect}
 				{'>'}
-			</h2>
+			</h1>
 			<main>
 				<div className="info" id="intro">
 					<h3>Hello there!</h3>
@@ -132,6 +134,23 @@ function App() {
 						I'll have to come up with a reason why this is a separate component
 						one day
 					</p>
+				</div>
+				<div className="info" id="Hero">
+					<p>Clasic hero element - simple and easy.</p>
+					<p>
+						Props: <br /> title?: string <br /> subtitle?: string <br /> image?:
+						React.CSSProperties['backgroundImage'] <br /> style?:
+						React.CSSProperties <br />
+						children?: React.ReactNode
+					</p>
+					<Hero
+						title="This is a Hero Component"
+						subtitle="Yes it is"
+						style={{ fontFamily: 'Monaco, Courier, mono' }}
+						textColor="rgb(255, 255, 255"
+					>
+						<p>Children go here by default</p>
+					</Hero>
 				</div>
 				<div className="info" id="Blob">
 					<p>

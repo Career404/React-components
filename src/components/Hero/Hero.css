@@ -1,0 +1,10 @@
+div.Hero {
+	margin: 0;
+	padding: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+div.Hero .Text {
+	text-align: center;
+}
