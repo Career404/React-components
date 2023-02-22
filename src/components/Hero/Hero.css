@@ -5,6 +5,7 @@ div.Hero {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-div.Hero .Text {
+div.Hero .Hero_Text {
 	text-align: center;
+	margin: 10px;
 }

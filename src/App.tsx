@@ -136,13 +136,17 @@ function App() {
 					</p>
 				</div>
 				<div className="info" id="Hero">
-					<p>Clasic hero element - simple and easy.</p>
+					<p>
+						Clasic hero element - simple and easy. By default uses a third-party
+						service (picsum.photos) to set random background-image
+					</p>
 					<p>
 						Props: <br /> title?: string <br /> subtitle?: string <br /> image?:
 						React.CSSProperties['backgroundImage'] <br /> style?:
 						React.CSSProperties <br />
 						children?: React.ReactNode
 					</p>
+					<p>Classes: .Hero and .Hero_Text</p>
 					<Hero
 						title="This is a Hero Component"
 						subtitle="Yes it is"
@@ -150,6 +154,36 @@ function App() {
 						textColor="rgb(255, 255, 255"
 					>
 						<p>Children go here by default</p>
+						<h4
+							style={{
+								textAlign: 'center',
+								color: 'teal',
+								textShadow: '1px 1px white',
+								fontSize: '2rem',
+							}}
+						>
+							You can style children individually
+						</h4>
+						<p>
+							<br />
+							this
+							<br />
+							is
+							<br />
+							how
+							<br />a<br />
+							lot
+							<br />
+							of
+							<br />
+							children
+							<br />
+							elements
+							<br />
+							affect <br />
+							this <br />
+							component
+						</p>
 					</Hero>
 				</div>
 				<div className="info" id="Blob">

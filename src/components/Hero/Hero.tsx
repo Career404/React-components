@@ -14,13 +14,13 @@ export default function Hero({
 	title,
 	subtitle,
 	textColor,
-	image = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(126, 126, 126, 0.5)), url("https://picsum.photos/800/400")',
+	image = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(126, 126, 126, 0.5)), url("https://picsum.photos/1200/400")',
 	style,
 	children,
 }: Props) {
 	return (
 		<div className="Hero" style={{ ...style, backgroundImage: image }}>
-			<div className="Text" style={{ color: textColor }}>
+			<div className="Hero_Text" style={{ color: textColor }}>
 				{title ? <h2>{title}</h2> : null}
 				{subtitle ? <h3>{subtitle}</h3> : null}
 			</div>
