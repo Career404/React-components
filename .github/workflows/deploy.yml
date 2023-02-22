@@ -35,7 +35,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: always()
+    if: github.ref == 'refs/heads/maser'
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
