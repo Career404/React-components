@@ -5,6 +5,7 @@ import Collapsible from './components/Collapsible/Collapsible'
 import Blob from './components/Blob/Blob'
 import HackerText from './components/hackerText/HackerText'
 import Hero from './components/Hero/Hero'
+import NumberControl from './components/NumberControl/NumberControl'
 
 function App() {
 	const [collapsibleSelect, setcollapsibleSelect] = React.useState('intro')
@@ -72,6 +73,7 @@ function App() {
 					<p>Collapsible</p>
 					<p>Navigation</p>
 					<p>Hero</p>
+					<p>NumberControl</p>
 				</Collapsible>
 			</Nav>
 			<h1>
@@ -115,7 +117,7 @@ function App() {
 						keyboard controls
 					</p>
 					<br />
-					<p>
+					<p className="Code">
 						interface CProps {'{'} <br />
 						children: React.ReactNode <br />
 						title: string <br />
@@ -185,6 +187,45 @@ function App() {
 							component
 						</p>
 					</Hero>
+				</div>
+
+				<div className="info" id="NumberControl">
+					<p>Another simple component</p>
+					<p>
+						Keyboard-focusable with up/down arrows responsible for
+						increment/decrement
+					</p>
+					<p className="Code">
+						interface ControlProps {'{'} <br />
+						title?: string <br /> defaultValue?: number <br /> callback?:
+						(value: any) ={'>'} void <br /> //currentNum is passed to callback
+						every time the value changes <br />
+						minValue?: number <br /> maxValue?: number <br /> styleBox?:
+						React.CSSProperties <br />
+						{'}'}
+					</p>
+					<NumberControl
+						title="Up and down"
+						minValue={1}
+						maxValue={10}
+						callback={(e) => console.log('the number is ' + e)}
+					/>
+					<NumberControl
+						title="Down and up"
+						minValue={10}
+						maxValue={99}
+						callback={(e) =>
+							console.log('the number in the round block is ' + e)
+						}
+						styleBox={{
+							backgroundColor: 'darkslategray',
+							borderRadius: '50px',
+							width: '100px',
+							height: '100px',
+							textAlign: 'center',
+							fontFamily: 'cursive',
+						}}
+					/>
 				</div>
 				<div className="info" id="Blob">
 					<p>

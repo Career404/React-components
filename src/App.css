@@ -13,3 +13,9 @@ main {
 .info {
 	display: none;
 }
+.Code {
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	padding: 10px;
+	font-family: 'Courier New', monospace;
+}

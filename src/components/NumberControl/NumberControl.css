@@ -1,0 +1,26 @@
+.NumberControl {
+	min-width: 50px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.NumberControl .ControlTitle {
+	font-size: 1.2rem;
+}
+.NumberControl .ControlLabel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.NumberControl button {
+	background: none;
+	outline: none;
+	border: none;
+	color: white;
+	cursor: pointer;
+	scale: 1.5;
+}
+.NumberControl button:hover {
+	scale: 2;
+}
